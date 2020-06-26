@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mano Taxi</string>
+    <string name="title_activity_passenger">Passenger</string>
 </resources>
