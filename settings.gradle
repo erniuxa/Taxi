@@ -1,2 +1,2 @@
-rootProject.name='Taxi'
+//rootProject.name='Taxi'
 include ':app'

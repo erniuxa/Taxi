@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
+
+
     }
 
     enum State {
@@ -88,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         edtUserName = findViewById(R.id.edtUserName);
         edtPassword = findViewById(R.id.edtPassword);
         edtDriverOrPassenger = findViewById(R.id.edtDOrP);
+
 
 
         btnSignUpLogin.setOnClickListener(new View.OnClickListener() {
