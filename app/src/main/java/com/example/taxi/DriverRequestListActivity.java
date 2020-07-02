@@ -182,15 +182,16 @@ public class DriverRequestListActivity extends AppCompatActivity implements View
 
 
                                 ParseGeoPoint pLocation = (ParseGeoPoint) nearRequest.get("passengerLocation");
-                                Double milesDistanceToPassenger = driverCurrentLocation.distanceInMilesTo(pLocation);
+                                Double kmDistanceToPassenger = driverCurrentLocation.distanceInKilometersTo(pLocation);
+
 
                                 // 5.87594834787398943 * 10
 
                                 //  58.246789 // Result
                                 // 58
-                                float roundedDistanceValue = Math.round(milesDistanceToPassenger * 10) / 10;
+                                float roundedDistanceValue = Math.round(kmDistanceToPassenger * 10) / 10;
 
-                                nearByDriveRequests.add("There are " + roundedDistanceValue + " miles to " + nearRequest.get("username"));
+                                nearByDriveRequests.add("There are " + roundedDistanceValue + " km to " + nearRequest.get("username"));
 
                                 passengersLatitudes.add(pLocation.getLatitude());
                                 passengersLongitudes.add(pLocation.getLongitude());

@@ -50,7 +50,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
     private Button btnRequestCar;
     private Button btnBeep;
 
-    private boolean isUberCancelled = true;
+    private boolean isTaxiCancelled = true;
 
     private boolean isCarReady = false;
     private Timer t;
@@ -85,8 +85,8 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
             public void done(List<ParseObject> objects, ParseException e) {
                 if (objects.size() > 0 && e == null) {
 
-                    isUberCancelled = false;
-                    btnRequestCar.setText("Cancel your uber request!");
+                    isTaxiCancelled = false;
+                    btnRequestCar.setText("Cancel your Taxi request!");
 
                     getDriverUpdates();
                 }
@@ -222,7 +222,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
     @Override
     public void onClick(View view) {
 
-        if (isUberCancelled) {
+        if (isTaxiCancelled) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
@@ -244,8 +244,8 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
 
                                 Toast.makeText(PassengerActivity.this, "A car request is sent", Toast.LENGTH_SHORT).show();
 
-                                btnRequestCar.setText("Cancel your uber order");
-                                isUberCancelled = false;
+                                btnRequestCar.setText("Cancel your Taxi order");
+                                isTaxiCancelled = false;
 
 
 
@@ -271,12 +271,12 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
 
                     if (requestList.size() > 0 && e == null) {
 
-                        isUberCancelled = true;
-                        btnRequestCar.setText("Request a new uber");
+                        isTaxiCancelled = true;
+                        btnRequestCar.setText("Request a new Taxi");
 
-                        for (ParseObject uberRequest : requestList) {
+                        for (ParseObject taxiRequest : requestList) {
 
-                            uberRequest.deleteInBackground(new DeleteCallback() {
+                            taxiRequest.deleteInBackground(new DeleteCallback() {
                                 @Override
                                 public void done(ParseException e) {
 
@@ -303,12 +303,12 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
 
             @Override
             public void run() {
-                ParseQuery<ParseObject> uberRequestQuery = ParseQuery.getQuery("RequestCar");
-                uberRequestQuery.whereEqualTo("username", ParseUser.getCurrentUser().getUsername());
-                uberRequestQuery.whereEqualTo("requestAccepted", true);
-                uberRequestQuery.whereExists("driverOfMe");
+                ParseQuery<ParseObject> taxiRequestQuery = ParseQuery.getQuery("RequestCar");
+                taxiRequestQuery.whereEqualTo("username", ParseUser.getCurrentUser().getUsername());
+                taxiRequestQuery.whereEqualTo("requestAccepted", true);
+                taxiRequestQuery.whereExists("driverOfMe");
 
-                uberRequestQuery.findInBackground(new FindCallback<ParseObject>() {
+                taxiRequestQuery.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
 
@@ -332,9 +332,10 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
 
                                                     ParseGeoPoint pLocationAsParseGeoPoint = new ParseGeoPoint(passengerLocation.getLatitude(), passengerLocation.getLongitude());
 
-                                                    double milesDistance = driverOfRequestLocation.distanceInMilesTo(pLocationAsParseGeoPoint);
+                                                    double kmDistance = driverOfRequestLocation.distanceInKilometersTo(pLocationAsParseGeoPoint);
 
-                                                    if (milesDistance < 0.3) {
+
+                                                    if (kmDistance < 0.3) {
 
 
                                                         requestObject.deleteInBackground(new DeleteCallback() {
@@ -342,18 +343,18 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                                                             public void done(ParseException e) {
                                                                 if (e == null) {
 
-                                                                    Toast.makeText(PassengerActivity.this, "Your Uber is ready! Hurray", Toast.LENGTH_LONG).show();
+                                                                    Toast.makeText(PassengerActivity.this, "Your Taxi is ready! Hurray", Toast.LENGTH_LONG).show();
                                                                     isCarReady = false;
-                                                                    isUberCancelled = true;
-                                                                    btnRequestCar.setText("You can order a new uber now!");
+                                                                    isTaxiCancelled = true;
+                                                                    btnRequestCar.setText("You can order a new Taxi now!");
                                                                 }
                                                             }
                                                         });
 
                                                     } else {
 
-                                                        float roundedDistance = Math.round(milesDistance * 10) / 10;
-                                                        Toast.makeText(PassengerActivity.this, requestObject.getString("driverOfMe") + " is " + roundedDistance + " miles away from you!- Please wait!!!", Toast.LENGTH_LONG).show();
+                                                        float roundedDistance = Math.round(kmDistance * 10) / 10;
+                                                        Toast.makeText(PassengerActivity.this, requestObject.getString("driverOfMe") + " is " + roundedDistance + " km away from you!- Please wait!!!", Toast.LENGTH_LONG).show();
 
 
                                                         LatLng dLocation = new LatLng(driverOfRequestLocation.getLatitude(),
