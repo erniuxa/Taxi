@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -47,7 +48,7 @@ public class ViewLocationsMapActivity extends FragmentActivity implements OnMapR
             @Override
             public void onClick(View v) {
 
-                //Toast.makeText(ViewLocationsMapActivity.this, getIntent().getStringExtra("rUsername"), Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewLocationsMapActivity.this, getIntent().getStringExtra("rUsername"), Toast.LENGTH_LONG).show(); // todo - DELETE this row?
 
                 ParseQuery<ParseObject> carRequestQuery = ParseQuery.getQuery("RequestCar");
                 carRequestQuery.whereEqualTo("username", getIntent().getStringExtra("rUsername"));
