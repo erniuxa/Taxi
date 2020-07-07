@@ -1,6 +1,7 @@
 package com.example.taxi;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -70,7 +71,7 @@ public class DriverRequestListActivity extends AppCompatActivity implements View
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
 
-        if (Build.VERSION.SDK_INT < 23 || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (Build.VERSION.SDK_INT < 28 || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
             initializeLocationListener();
 
@@ -119,11 +120,11 @@ public class DriverRequestListActivity extends AppCompatActivity implements View
 
 
 
-        if (Build.VERSION.SDK_INT < 23) {
+        if (Build.VERSION.SDK_INT < 28) {
 
-            Location currentDriverLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            @SuppressLint("MissingPermission") Location currentDriverLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             updateRequestsListView(currentDriverLocation);
-        } else if (Build.VERSION.SDK_INT >= 23) {
+        } else if (Build.VERSION.SDK_INT >= 28) {
 
             if (ContextCompat.checkSelfPermission(DriverRequestListActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -263,6 +264,7 @@ public class DriverRequestListActivity extends AppCompatActivity implements View
     private void initializeLocationListener() {
 
         locationListener = new LocationListener() {
+            @SuppressLint("MissingPermission")
             @Override
             public void onLocationChanged(Location location) {
 

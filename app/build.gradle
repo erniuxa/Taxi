@@ -4,10 +4,10 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.taxi"
-        minSdkVersion 19
+        minSdkVersion 28
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 8
+        versionName "8.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -24,6 +24,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha06'
     implementation 'android.arch.navigation:navigation-ui:1.0.0-alpha06'
     implementation 'com.android.support:design:28.0.0'
@@ -34,6 +35,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "com.github.parse-community.Parse-SDK-Android:parse:1.18.5"
     implementation 'com.android.support:multidex:1.0.0'
+
+
+
 
 }
 repositories {

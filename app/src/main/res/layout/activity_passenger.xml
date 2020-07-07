@@ -12,28 +12,46 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         tools:context=".PassengerActivity"
-        tools:layout="@layout/activity_passenger">
+        tools:layout="@android:layout/simple_gallery_item">
 
 
     </fragment>
 
     <Button
         android:id="@+id/btnRequestCar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Request a Car" />
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_bg"
+        android:fontFamily="sans-serif-light"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/request_a_car"
+        android:textColor="@color/black" />
 
 
     <Button
         android:id="@+id/btnBeepBeep"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Beep Beep!" />
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_bg"
+        android:fontFamily="sans-serif-light"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/beep_beep"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/btnLogoutFromPassengerActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout from App" />
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_bg"
+        android:fontFamily="sans-serif-light"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/logout_from_app"
+        android:textColor="@color/black" />
 
 </LinearLayout>

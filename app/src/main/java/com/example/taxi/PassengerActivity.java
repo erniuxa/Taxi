@@ -59,7 +59,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -72,11 +72,9 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
         btnBeep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 getDriverUpdates();
             }
         });
-
 
         ParseQuery<ParseObject> carRequestQuery = ParseQuery.getQuery("RequestCar");
         carRequestQuery.whereEqualTo("username", ParseUser.getCurrentUser().getUsername());
@@ -93,7 +91,6 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
             }
         });
 
-
         findViewById(R.id.btnLogoutFromPassengerActivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,15 +100,12 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                     public void done(ParseException e) {
                         if (e == null) {
                             finish();
-
                         }
                     }
                 });
             }
         });
-
     }
-
 
     /**
      * Manipulates the map once available.
@@ -126,7 +120,6 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         locationListener = new LocationListener() {
@@ -134,7 +127,6 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
             public void onLocationChanged(Location location) {
 
                 updateCameraPassengerLocation(location);
-
 
             }
 
@@ -154,7 +146,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
             }
         };
 
-        if (Build.VERSION.SDK_INT < 23) {
+        if (Build.VERSION.SDK_INT < 28) {
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
@@ -168,12 +160,11 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
             }
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
-        } else if (Build.VERSION.SDK_INT >= 23) {
+        } else if (Build.VERSION.SDK_INT >= 28) {
 
             if (ContextCompat.checkSelfPermission(PassengerActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
                 ActivityCompat.requestPermissions(PassengerActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1000);
-
 
             } else {
 
@@ -182,19 +173,15 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                 Location currentPassengerLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 updateCameraPassengerLocation(currentPassengerLocation);
 
-
             }
         }
-
-
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == 1000 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if (requestCode == 1000 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
             if (ContextCompat.checkSelfPermission(PassengerActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
@@ -204,11 +191,9 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
 
             }
         }
-
     }
 
     private void updateCameraPassengerLocation(Location pLocation) {
-
 
         if (isCarReady == false) {
             LatLng passengerLocation = new LatLng(pLocation.getLatitude(), pLocation.getLongitude());
@@ -246,10 +231,6 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
 
                                 btnRequestCar.setText("Cancel your Taxi order");
                                 isTaxiCancelled = false;
-
-
-
-
                             }
                         }
                     });
@@ -262,7 +243,6 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
             }
         } else {
 
-
             ParseQuery<ParseObject> carRequestQuery = ParseQuery.getQuery("RequestCar");
             carRequestQuery.whereEqualTo("username", ParseUser.getCurrentUser().getUsername());
             carRequestQuery.findInBackground(new FindCallback<ParseObject>() {
@@ -270,12 +250,10 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                 public void done(List<ParseObject> requestList, ParseException e) {
 
                     if (requestList.size() > 0 && e == null) {
-
                         isTaxiCancelled = true;
                         btnRequestCar.setText("Request a new Taxi");
 
                         for (ParseObject taxiRequest : requestList) {
-
                             taxiRequest.deleteInBackground(new DeleteCallback() {
                                 @Override
                                 public void done(ParseException e) {
@@ -290,14 +268,10 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                     }
                 }
             });
-
         }
-
     }
 
     private void getDriverUpdates() {
-
-
         t = new Timer();
         t.scheduleAtFixedRate(new TimerTask() {
 
@@ -315,6 +289,10 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                         if (objects.size() > 0 && e == null) {
 
                             isCarReady = true;
+
+
+
+
                             for (final ParseObject requestObject : objects) {
 
                                 ParseQuery<ParseUser> driverQuery = ParseUser.getQuery();
@@ -334,15 +312,11 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
 
                                                     double kmDistance = driverOfRequestLocation.distanceInKilometersTo(pLocationAsParseGeoPoint);
 
-
                                                     if (kmDistance < 0.3) {
-
-
                                                         requestObject.deleteInBackground(new DeleteCallback() {
                                                             @Override
                                                             public void done(ParseException e) {
                                                                 if (e == null) {
-
                                                                     Toast.makeText(PassengerActivity.this, "Your Taxi is ready! Hurray", Toast.LENGTH_LONG).show();
                                                                     isCarReady = false;
                                                                     isTaxiCancelled = true;
@@ -352,7 +326,6 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                                                         });
 
                                                     } else {
-
                                                         float roundedDistance = Math.round(kmDistance * 10) / 10;
                                                         Toast.makeText(PassengerActivity.this, requestObject.getString("driverOfMe") + " is " + roundedDistance + " km away from you!- Please wait!!!", Toast.LENGTH_LONG).show();
 
@@ -392,7 +365,6 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                                 });
 
 
-
                             }
                         } else {
                             isCarReady = false;
@@ -402,8 +374,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
 
             }
 
-        }, 0, 3000);
-
+        }, 3000, 3000);
 
 
     }

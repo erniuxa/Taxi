@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
@@ -20,6 +21,10 @@ import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+
+
+
 
     @Override
     public void onClick(View view) {
@@ -49,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
             }
         } else {
-            Toast.makeText(MainActivity.this, "Are you a driver or a passenger?", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Enter 'Driver' or 'Passenger'", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -66,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnSignUpLogin, btnOneTimeLogin;
     private RadioButton driverRadioButton, passengerRadioButton;
     private EditText edtUserName, edtPassword, edtDriverOrPassenger;
+    private TextView text_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         state = State.SIGNUP;
 
+        text_login = findViewById(R.id.text_login);
         edtUserName = findViewById(R.id.edtUserName);
         edtPassword = findViewById(R.id.edtPassword);
         edtDriverOrPassenger = findViewById(R.id.edtDOrP);
@@ -166,11 +173,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     state = State.LOGIN;
                     item.setTitle("Sign Up");
                     btnSignUpLogin.setText("Log In");
+                    text_login.setText("Log In");
+
                 } else if (state == State.LOGIN) {
 
                     state = State.SIGNUP;
                     item.setTitle("Log In");
                     btnSignUpLogin.setText("Sign Up");
+                    text_login.setText("Sign Up");
                 }
 
 

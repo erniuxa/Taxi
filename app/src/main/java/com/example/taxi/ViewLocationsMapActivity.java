@@ -36,7 +36,7 @@ public class ViewLocationsMapActivity extends FragmentActivity implements OnMapR
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_locations_map);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -106,20 +106,21 @@ public class ViewLocationsMapActivity extends FragmentActivity implements OnMapR
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Toast.makeText(this, getIntent().getDoubleExtra("dLatitude", 0) + "" , Toast.LENGTH_LONG).show();
-
-
+        // TODO suziureti ar pasitaise
+         Toast.makeText(this, getIntent().getDoubleExtra("dLatitude", 0) + "" , Toast.LENGTH_LONG).show();
 
         LatLng dLocation = new LatLng(getIntent()
                 .getDoubleExtra("dLatitude", 0),
                 getIntent().getDoubleExtra("dLongitude", 0));
-//
-//        mMap.addMarker(new MarkerOptions().position(dLocation).title("Driver Location"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(dLocation));
+        // TODO suziureti ar pasitaise
+        mMap.addMarker(new MarkerOptions().position(dLocation).title("Driver Location"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(dLocation));
 
         LatLng pLocation = new LatLng(getIntent().getDoubleExtra("pLatitude", 0), getIntent().getDoubleExtra("pLongitude", 0));
-//        mMap.addMarker(new MarkerOptions().position(pLocation).title("Passenger Location"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(pLocation));
+
+        // TODO suziureti ar pasitaise
+        mMap.addMarker(new MarkerOptions().position(pLocation).title("Passenger Location"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(pLocation));
 
 
         LatLngBounds.Builder builder = new LatLngBounds.Builder();

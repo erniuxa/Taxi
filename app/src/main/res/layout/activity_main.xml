@@ -1,129 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/grad_bg"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/taxi_logo3"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@drawable/taxi_logo3" />
 
-
-    <EditText
-        android:id="@+id/edtUserName"
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Please enter your username..."
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Please enter your password"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUserName" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
 
-        <RadioButton
-            android:id="@+id/rdbPassenger"
+        android:layout_marginBottom="40dp">
+
+
+        <TextView
+            android:id="@+id/text_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Passenger" />
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/sign_up"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
 
-        <RadioButton
-            android:id="@+id/rdbDriver"
+        <LinearLayout
+            android:id="@+id/linlay1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Driver" />
+            android:layout_below="@+id/text_login"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
-    </RadioGroup>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnSignUpLogin"
-        android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/username"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/edtUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/et_bg"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/enter_your_user_name"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="15sp"
+                    android:autofillHints="" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/psw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/password"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/edtPassword"
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/et_bg"
+                    android:cursorVisible="true"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/enter_your_password"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="15sp"
+                    android:autofillHints="" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:layout_below="@+id/linlay1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <RadioButton
+                android:id="@+id/rdbPassenger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/black"
+                android:text="@string/passenger"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/rdbDriver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/black"
+                android:text="@string/driver"
+                android:textColor="@color/black" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnSignUpLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/radioGroup"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="sans-serif-medium"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:text="@string/sign_up"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/btnSignUpLogin"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/don_t_want_to_sign_up_or_login"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSignUpLogin" />
+
+        <EditText
+            android:id="@+id/edtDOrP"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:fontFamily="sans-serif-light"
+            android:hint="@string/are_you_a_driver_or_a_passenger"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColorHint="@color/grey"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnOneTimeLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtDOrP"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="sans-serif-medium"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/one_time_log_in"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rellay2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Sign Up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="28dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Don't want to sign up or Login?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUpLogin" />
+    </RelativeLayout>
 
-    <EditText
-        android:id="@+id/edtDOrP"
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Are you a Driver or a Passenger?"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+</RelativeLayout>
 
-    <Button
-        android:id="@+id/btnOneTimeLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="One time login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDOrP" />
-
-</android.support.constraint.ConstraintLayout>
