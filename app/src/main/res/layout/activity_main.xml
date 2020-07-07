@@ -16,7 +16,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/taxi_logo3" />
+        app:srcCompat="@drawable/taxi_logo3"
+        android:contentDescription="TODO" />
+
 
     <EditText
         android:id="@+id/edtUserName"
