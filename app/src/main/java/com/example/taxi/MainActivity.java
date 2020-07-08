@@ -22,10 +22,6 @@ import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-
-
-
     @Override
     public void onClick(View view) {
 
@@ -38,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (user != null && e == null) {
 
                             Toast.makeText(MainActivity.this, "We have an anonymous user", Toast.LENGTH_SHORT).show();
-
 
                             user.put("as", edtDriverOrPassenger.getText().toString());
 
@@ -57,10 +52,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(MainActivity.this, "Enter 'Driver' or 'Passenger'", Toast.LENGTH_SHORT).show();
             return;
         }
-
-
-
-
     }
 
     enum State {
@@ -98,8 +89,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         edtPassword = findViewById(R.id.edtPassword);
         edtDriverOrPassenger = findViewById(R.id.edtDOrP);
 
-
-
         btnSignUpLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +116,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 Toast.makeText(MainActivity.this, "Signed Up!", Toast.LENGTH_SHORT).show();
                                 transitionToPassengerActivity();
                                 transitionToDriverRequestListActivity();
-
                             }
                         }
                     });
@@ -183,10 +171,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     text_login.setText("Sign Up");
                 }
 
-
                 break;
         }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -200,9 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this, PassengerActivity.class);
                 startActivity(intent);
             }
-
         }
-
     }
 
     private void transitionToDriverRequestListActivity() {
@@ -213,10 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Intent intent = new Intent(this, DriverRequestListActivity.class);
                 startActivity(intent);
-
             }
-
         }
-
     }
 }
