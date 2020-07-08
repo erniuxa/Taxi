@@ -238,7 +238,6 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                 } else {
 
                     Toast.makeText(this, "Unknown Error. Something went wrong!!!", Toast.LENGTH_SHORT).show();
-
                 }
             }
         } else {
@@ -277,7 +276,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
 
             @Override
             public void run() {
-                ParseQuery<ParseObject> taxiRequestQuery = ParseQuery.getQuery("RequestCar");
+                ParseQuery<ParseObject> taxiRequestQuery = ParseQuery.getQuery("RequestCar"); // back4app -
                 taxiRequestQuery.whereEqualTo("username", ParseUser.getCurrentUser().getUsername());
                 taxiRequestQuery.whereEqualTo("requestAccepted", true);
                 taxiRequestQuery.whereExists("driverOfMe");
@@ -289,9 +288,6 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                         if (objects.size() > 0 && e == null) {
 
                             isCarReady = true;
-
-
-
 
                             for (final ParseObject requestObject : objects) {
 

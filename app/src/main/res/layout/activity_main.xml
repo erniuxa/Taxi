@@ -17,10 +17,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
+        android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/app_name"
         app:srcCompat="@drawable/taxi_logo3" />
 
     <RelativeLayout
@@ -71,8 +71,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
+                    android:autofillHints="@string/username"
                     android:background="@drawable/et_bg"
-                    android:cursorVisible="true"
                     android:ems="10"
                     android:fontFamily="sans-serif-light"
                     android:hint="@string/enter_your_user_name"
@@ -80,10 +80,10 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/grey"
+                    android:cursorVisible="true"
                     android:textCursorDrawable="@color/black"
-                    android:textSize="15sp"
-                    android:autofillHints="" />
+                    android:textColorHint="@drawable/selector"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -105,21 +105,21 @@
 
                 <EditText
                     android:id="@+id/edtPassword"
-                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
+                    android:autofillHints="@string/password"
                     android:background="@drawable/et_bg"
-                    android:cursorVisible="true"
                     android:fontFamily="sans-serif-light"
                     android:hint="@string/enter_your_password"
+                    android:inputType="textPassword"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/grey"
+                    android:cursorVisible="true"
                     android:textCursorDrawable="@color/black"
-                    android:textSize="15sp"
-                    android:autofillHints="" />
+                    android:textColorHint="@drawable/selector"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -183,7 +183,7 @@
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/don_t_want_to_sign_up_or_login"
@@ -193,6 +193,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSignUpLogin" />
 
+
         <EditText
             android:id="@+id/edtDOrP"
             android:layout_width="match_parent"
@@ -201,14 +202,17 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:autofillHints=""
+            android:cursorVisible="true"
+            android:textCursorDrawable="@color/black"
+            android:textColorHint="@drawable/selector"
             android:ems="10"
             android:fontFamily="sans-serif-light"
             android:hint="@string/are_you_a_driver_or_a_passenger"
             android:inputType="textPersonName"
             android:textAlignment="center"
-            android:textColorHint="@color/grey"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:autofillHints="@string/are_you_a_driver_or_a_passenger" />
+
 
         <Button
             android:id="@+id/btnOneTimeLogin"
