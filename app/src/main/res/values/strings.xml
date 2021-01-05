@@ -1,16 +1,18 @@
 <resources>
     <string name="app_name">Mano Taxi</string>
 
+
+
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>
-    <string name="back4app_app_id">UDcE50DpChnknn9uxFMPeSZ3mBimwdxUWiMfpFRn</string>
-    <string name="back4app_client_key">Zskr83XBOkNAyXzNElm05zECllkpXq388g9IDcEL</string>
+    <string name="back4app_app_id">ouwESsz3He4tliHHOhcwA2ZKuyvcLGNj9sxfTD9l</string>
+    <string name="back4app_client_key">FJUnc69zSzZhmfo3M0eZZ8tBJz9zDrWT2vhD617o</string>
 
 
     <string name="google_maps_API_key">AIzaSyAeZL7QkljQT22NQDWo8tNmPn9a4YvOtl0</string>
 
 
 
-    AIzaSyAeZL7QkljQT22NQDWo8tNmPn9a4YvOtl0
+
 
     <string name="title_activity_passenger">Passenger</string>
     <string name="title_activity_view_locations_map">Map</string>
