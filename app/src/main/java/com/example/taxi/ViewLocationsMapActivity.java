@@ -101,7 +101,6 @@ public class ViewLocationsMapActivity extends FragmentActivity implements OnMapR
 
     }
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;

@@ -11,7 +11,7 @@
     <Button
         android:id="@+id/btnGetRequests"
         android:layout_width="380dp"
-        android:layout_height="40dp"
+        android:layout_height="91dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/btn_bg"

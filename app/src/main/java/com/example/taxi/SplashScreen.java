@@ -35,8 +35,6 @@ public class SplashScreen extends Activity {
         super.onDestroy();
         mWaitHandler.removeCallbacksAndMessages(null);
     }
-
-
 }
 
 

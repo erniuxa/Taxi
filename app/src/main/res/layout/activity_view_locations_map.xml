@@ -28,7 +28,4 @@
         android:textColor="@color/black"
         android:text="@string/i_want_to_give_this_passenger_a_ride" />
 
-
-
-
 </LinearLayout>

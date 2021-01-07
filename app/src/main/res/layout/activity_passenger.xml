@@ -29,7 +29,6 @@
         android:text="@string/request_a_car"
         android:textColor="@color/black" />
 
-
     <Button
         android:id="@+id/btnBeepBeep"
         android:layout_width="380dp"

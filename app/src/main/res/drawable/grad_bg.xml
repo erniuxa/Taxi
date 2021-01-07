@@ -8,5 +8,4 @@
         android:startColor="@color/gradStart"
         android:type="linear" />
 
-
 </shape>
